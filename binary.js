@@ -6,41 +6,25 @@ var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
 var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
 function ownSort(arr) {
-  return selectionSort(arr);
+  return insertionSort(arr);
 }
 
-function selectionSort(arr) {
+//IMPLEMENT INSERTION SORT
+function insertionSort(arr) {
   for (let i = 0; i < arr.length; i++) {
-      var currIndex = i;
-
-      //add (i + 1) to take into account the indexing of the initial array before slicing
-      var nextSmallestIndex = findSmallestNumberIndex(arr.slice(currIndex + 1)) + (i + 1);
-  
-      if (arr[currIndex] > arr[nextSmallestIndex]) {
-          //swap the index
-          var temp = arr[currIndex];
-          arr[currIndex] = arr[nextSmallestIndex];
-          arr[nextSmallestIndex] = temp;
+    var key = i;
+    for (let indexToSwap = key - 1; indexToSwap >= 0; indexToSwap--) {
+      debugger;
+      if (arr[key] < arr[indexToSwap]) {
+        var temp = arr[key];
+        arr[key] = arr[indexToSwap];
+        arr[indexToSwap] = temp;
+        key = indexToSwap;
       }
-  
+      debugger;
+    }
   }
   return arr;
-}
-
-function findSmallestNumberIndex(arr) {
-  var smallest = arr[0];
-  var smallestIndex = 0;
-
-  for (let i = 0; i < arr.length; i++) {
-      var currNum = arr[i];
-      if (currNum < smallest) {
-          smallest = currNum;
-          smallestIndex = i;
-      }
-      
-  }
-  
-  return smallestIndex;
 }
 
 
@@ -85,7 +69,7 @@ console.log(arrayGenapSorted);
 //console.log(binary_search(0, [0,1,2,3,4,5,6,7]))
 console.log(binary_search(8, arrayGenapSorted))
 console.log(binary_search(10, arrayGenapSorted))
- console.log(binary_search(33, arrayGenapSorted))
+console.log(binary_search(33, arrayGenapSorted))
 
 console.log(binary_search(53, arrayGanjilSorted))
 console.log(binary_search(3, arrayGanjilSorted))
