@@ -21,25 +21,20 @@ function ownSort(arr) {
 }
 
 function binary_search (search, array) {
-  var mid = Math.floor(array.length/2)
-
-  if(!array.includes(search)) {
-		return -1;
-	}
-	var max = array.length-1;
-	var min = 0;
-
-	while(min <= max) {
-		var mid = Math.floor((max+min)/2);
-		if(array[mid] == search) {
-			return mid;
-		} else if(array[mid] < search) {
-			min = min + 1;
-		} else {
-			max = mid - 1;
-		}
-	}
-	return -1;
+  var batasBawah= 0;
+  var batasAtas= array.length-1;
+  
+  while (batasBawah<=batasAtas) {
+    var tengah= Math.floor((batasBawah+batasAtas)/2);
+    if (search < array[tengah]) {
+      var batasAtas= tengah-1
+    } else if (search > array[tengah]) {
+      var batasBawah= tengah+1
+    } else {
+      return tengah;
+    }
+  }
+return -1;
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
