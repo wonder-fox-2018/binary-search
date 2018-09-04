@@ -34,10 +34,10 @@ function binary_search(search, array) {
   var startIndex = 0;
   var endIndex = array.length -1;
   var midIndex = Math.floor((endIndex - startIndex)/2);
-  var notFound = startIndex !== midIndex && endIndex !== midIndex ;
+  var notFound = true;
   
   while (notFound) {
-    notFound = startIndex !== midIndex && endIndex !== midIndex;
+    notFound = startIndex <= endIndex;
     debugger;
     if (search === array[midIndex]) {
       return midIndex;
