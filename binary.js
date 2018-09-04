@@ -3,22 +3,23 @@
 var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8, 23];
 var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55];
 
-function ownSort(data) {
-  for (var i = 0; i < data.length-1; i++) {
-		var temp = data[i];
-		var min = data[i];
-		var index_min;
+function ownSort(data) { //Insertion Sort
+  for (var i = 1; i < data.length; i++) {
+		for (var j = i-1; j >= 0; j--) {
+			var inferior;
+			var index_inferior;
+			var superior;
+			var index_superior;
 
-		for (var j = i+1; j < data.length; j++) {
-			if (data[j] < min) {
-				min = data[j];
-				index_min = j;
+			if (data[j+1] < data[j]) {
+				inferior = data[j+1];
+				superior = data[j];
+				index_superior = j;
+				index_inferior = j+1;
 			}
-		}
 
-		if (min < temp) {
-			data[i] = min;
-			data[index_min] = temp;
+			data[index_superior] = inferior;
+			data[index_inferior] = superior;
 		}
 	}
 
@@ -86,9 +87,6 @@ function binary_search (search, array) {
 
 var arrayGenapSorted = ownSort(testArrayGenap);
 var arrayGanjilSorted = ownSort(testArrayGanjil);
-
-console.log(arrayGenapSorted);
-console.log(arrayGanjilSorted);
 
 // Driver code
 console.log(binary_search(8, arrayGenapSorted)); // 0
