@@ -17,25 +17,21 @@ function ownSort(arr) {
   return arr
 }
 
-function binarySearch (search, array) {
-  ownSort(array)
-  var awal = 0
-  var akhir = array.length-1
-  var mid = Math.floor(awal+akhir/2)
-
-  while(awal <= akhir){
-    mid = Math.floor(awal+akhir/2)
-    if(array[mid] === search){
-      return array[mid]+' true'
-    } else if (array[mid] < search){
-      awal = mid+=1
+function binarySearch (search, arr) {
+  let left = 0 
+  let right = arr.length-1
+  while (left <= right) {
+    let midIndex = left + Math.floor((right-left)/2)
+ 
+    if (arr[midIndex] === search) {
+      return midIndex
+    } else if (arr[midIndex] < search) {
+        left = midIndex + 1
     } else {
-      akhir = mid-=1
+        right = midIndex - 1
     }
   }
-
-  return -1+' false'
-
+  return -1;
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
@@ -44,7 +40,7 @@ var arrayGanjilSorted = ownSort(testArrayGanjil)
 // Driver code
 console.log(binarySearch(8, arrayGenapSorted))
 console.log(binarySearch(10, arrayGenapSorted))
-// console.log(binarySearch(33, arrayGenapSorted))
+console.log(binarySearch(33, arrayGenapSorted))
 
 console.log(binarySearch(53, arrayGanjilSorted))
 console.log(binarySearch(3, arrayGanjilSorted))
