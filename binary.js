@@ -4,9 +4,21 @@ var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
 var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
 function ownSort(arr) {
-  
+  for (var i=0; i<arr.length; i++) {
+    for (var j=i+1; j >= 0; j--) {
+      if (arr[j+1] < arr[j]) {
+        var tampung = arr[j+1];
+        arr[j+1] = arr[j];
+        arr[j] = tampung; 
+      }
+    }
+  }
   return arr
 }
+
+console.log(ownSort(testArrayGenap));
+console.log(ownSort(testArrayGanjil));
+
 
 function binary_search (search, array) {  
   var indexAwal = 0; // 0
@@ -17,7 +29,6 @@ function binary_search (search, array) {
 
   while (indexTengah <= indexAkhir && indexTengah >= indexAwal) {
     if (array[indexTengah] === search) { 
-      // console.log(array[midIndex]);
       return indexTengah;
     }
     else if (search < array[indexTengah]) {
