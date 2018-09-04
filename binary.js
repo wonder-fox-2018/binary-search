@@ -18,6 +18,7 @@ function ownSort(arr) {
 }
 
 function binary_search (search, array) {
+  
   var kecil = 0;
   var besar = array.length - 1;
 
@@ -26,12 +27,24 @@ function binary_search (search, array) {
   var limit = false;
 
   while(limit === false) {
+
     var mean = Math.floor((besar - kecil)/2);
 
-    if (mean === 0 || mean === array.length - 1 ||kecil > mean) limit = true
-    if (search === array[mean]) return mean
-    else if (search > array[mean]) kecil = mean;
-    else if (search < array[mean]) besar = mean;  
+    if (mean === 0 || mean === array.length - 1 ||kecil > mean) {
+      limit = true
+    }
+
+    if (search === array[mean]) {
+      return mean
+    }
+
+    else if (search > array[mean]){
+      kecil = mean;
+    }
+
+    else if (search < array[mean]){
+      besar = mean;
+    }  
   }
   return -1;
 }
