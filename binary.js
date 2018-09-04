@@ -5,22 +5,36 @@ var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55];
 
 function ownSort(arr) {
     // Your sorting code
-    for (var i = 0; i < arr.length; i++) {
-        for (var j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[i]) {
-                let temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+    var acuan,i_acuan;
+    for (var i = 0; i < arr.length; i++) {       //insertion sort
+        acuan=arr[i];
+        i_acuan=i;
+        for (var j = i-1; j >=0; j--) {
+            if(acuan<arr[j]){
+                arr[i_acuan]=arr[j];
+                arr[j]=acuan;
+                i_acuan=j;
+                
+            }        
         }
     }
+    
+    // for (var i = 0; i < arr.length; i++) {
+    //     for (var j = i + 1; j < arr.length; j++) {
+    //         if (arr[j] < arr[i]) {
+    //             let temp = arr[i];
+    //             arr[i] = arr[j];
+    //             arr[j] = temp;
+    //         }
+    //     }
+    // }
     return arr;
 }
 
 function binary_search(search, array) {
     // Your searching code
 
-    var i_kanan = array.length;
+    var i_kanan = array.length; 
     var i_kiri = 0;
     var i = Math.floor((i_kanan - i_kiri) / 2);
     for (; i_kanan - i_kiri >= 0;) {
