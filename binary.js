@@ -8,7 +8,7 @@ function ownSort(arr) {
   return arr
 }
 
-function binarySearch (search, array) {
+function binary_search(search, array) {
   // Your searching code
   return 0;
 }
