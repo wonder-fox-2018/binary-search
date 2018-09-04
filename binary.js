@@ -1,27 +1,39 @@
 'use strict'
+/*
+  PSEUDOCODE :
+  SET "testArrayGenap" with value [40,18,22,32,90,10,10,8]
+  SET "testArrayGanjil" with value [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
+  FUNCTION ownSort("arr"){
+    SET "data" with value "arr"
+    LOOP through each number in "data"
+      SET 
+    End Loop 
+  }
+*/
 var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
 var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
 function ownSort(arr) {
   // Your sorting code
   var data=arr
-    for(var i=0;i<data.length-1;i++){
-        var currentData=data[i]
-        var maks=data[i+1]
-        var indexMaks=i+1
-        for(var j=i+1;j<data.length;j++){
-            if(data[j]<maks){
-                maks=data[j]
-                indexMaks=j
-            }
+  for(var i=1;i<data.length;i++){
+    var indexBefore=i-1
+    var dataBefore=data[indexBefore]
+    if(data[i]<dataBefore){
+      data[indexBefore]=data[i]
+      data[i]=dataBefore
+      while(indexBefore !== 0){
+        var dataMundur=data[indexBefore]
+        if(data[indexBefore]<data[indexBefore-1]){
+          data[indexBefore]=data[indexBefore-1]
+          data[indexBefore-1]=dataMundur
         }
-        if(maks<currentData){
-            data[i]=maks
-            data[indexMaks]=currentData
-        }
+        indexBefore -=1
+      }
     }
-    return data
+  }
+  return data
 }
 //mencari median
 function binarySearch (search, array) {
